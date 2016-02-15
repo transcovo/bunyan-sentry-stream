@@ -1,0 +1,27 @@
+{
+  "name": "bunyan-sentry-stream",
+  "version": "1.0.0",
+  "description": "Write log to Sentry/Raven by using Bunyan",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.3.0"
+  },
+  "devDependencies": {
+    "bunyan": "^1.6.0",
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.6",
+    "eslint": "^1.10.3",
+    "eslint-config-cp": "^1.1.0",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3"
+  },
+  "scripts": {
+    "coverage": "istanbul cover node_modules/.bin/_mocha --include-all-sources --root server --report lcovonly -- --recursive -R spec",
+    "lint": "eslint .",
+    "test": "npm run lint && npm run coverage",
+    "mocha": "mocha --recursive"
+  },
+  "author": "",
+  "license": "UNLICENSED"
+}

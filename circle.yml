@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 5.3.0
+
+general:
+  artifacts:
+    - "coverage"
+
+test:
+  post:
+    - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
