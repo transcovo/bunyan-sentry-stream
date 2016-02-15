@@ -1,5 +1,8 @@
 # Bunyan Sentry Stream
 
+[![Coverage Status](https://coveralls.io/repos/github/transcovo/bunyan-sentry-stream/badge.svg?branch=master)](https://coveralls.io/github/transcovo/bunyan-sentry-stream?branch=master)
+[![Circle CI](https://circleci.com/gh/transcovo/bunyan-sentry-stream/tree/master.svg?style=svg&circle-token=e6e71b05673a545e6d3ee2b9a50a325a66858e95)](https://circleci.com/gh/transcovo/bunyan-sentry-stream/tree/master)
+
 Write log to Sentry/Raven by using Bunyan
 
 ## Install & Use
