@@ -49,10 +49,8 @@ const advancedLogger = bunyan.createLogger({
 ## Contribute
 
 ```sh
-npm start         # start the service
 npm test          # start test suites (coverage + lint + mocha)
 npm run coverage  # run the code coverage tool
-npm run doc       # generate the api doc
 npm run lint      # execute linter tool
 npm run mocha     # run the tests
 ```
