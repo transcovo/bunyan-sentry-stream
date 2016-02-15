@@ -33,7 +33,7 @@ describe('SentrySteam class', () => {
   it('should log a message from logger#debug(message)', () => {
     const message = 'Hello';
     const client = definitions.givenClient();
-    const logger = definitions.givenLogger(client);
+    const logger = definitions.givenLogger(client, 'debug');
     logger.debug(message);
 
     definitions.thenClientCapturesMessage(client, 'info', message);
@@ -41,7 +41,7 @@ describe('SentrySteam class', () => {
 
   it('should log a message from logger#info(message, messageArgs)', () => {
     const client = definitions.givenClient();
-    const logger = definitions.givenLogger(client);
+    const logger = definitions.givenLogger(client, 'debug');
     logger.info('Hello %s', 'Joe Mocha', '!');
     definitions.thenClientCapturesMessage(client, 'info', 'Hello Joe Mocha !');
   });
@@ -76,7 +76,7 @@ describe('SentrySteam class', () => {
 
   it('should log a message from logger#debug(extraWithError, message)', () => {
     const client = definitions.givenClient();
-    const logger = definitions.givenLogger(client);
+    const logger = definitions.givenLogger(client, 'debug');
     const err = new Error('Hello Error');
 
     logger.debug({ foo: 'bar', err }, 'Hello');

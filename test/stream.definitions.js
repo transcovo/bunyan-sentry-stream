@@ -15,9 +15,10 @@ module.exports = {
 /**
  * Build a Bunyan logger
  * @param  {Object} client a Sentry client
+ * @param  {String} [level] a Bunyan level
  * @return {Object}        the logger
  */
-function givenLogger(client) {
+function givenLogger(client, level) {
   return bunyan.createLogger({
     name: 'test-logger',
     streams: [
@@ -26,7 +27,7 @@ function givenLogger(client) {
       //   level: 'debug',
       //   stream: process.stdout
       // },
-      stream(client, 'debug')
+      stream(client, level)
     ]
   });
 }
