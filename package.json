@@ -22,6 +22,10 @@
     "test": "npm run lint && npm run coverage",
     "mocha": "mocha --recursive"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/transcovo/bunyan-sentry-stream.git"
+  },
   "author": "",
-  "license": "UNLICENSED"
+  "license": "Apache-2.0"
 }
