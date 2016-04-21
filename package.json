@@ -2,30 +2,39 @@
   "name": "bunyan-sentry-stream",
   "version": "1.0.1",
   "description": "Write log to Sentry/Raven by using Bunyan",
+  "keywords": ["bunyan", "sentry", "raven", "log"],
   "main": "index.js",
   "dependencies": {
-    "lodash": "^4.3.0"
+    "lodash": "~4.3.0"
   },
   "devDependencies": {
-    "bunyan": "^1.6.0",
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.6",
-    "eslint": "^1.10.3",
-    "eslint-config-cp": "^1.1.0",
-    "istanbul": "^0.4.2",
-    "mocha": "^2.4.5",
-    "sinon": "^1.17.3"
+    "bunyan": "~1.6.0",
+    "chai": "~3.5.0",
+    "coveralls": "~2.11.6",
+    "eslint": "~1.10.3",
+    "eslint-config-cp": "~1.1.0",
+    "istanbul": "~0.4.2",
+    "mocha": "~2.4.5",
+    "sinon": "~1.17.3"
   },
   "scripts": {
-    "coverage": "istanbul cover _mocha --include-all-sources --report lcovonly -- --recursive -R spec",
-    "lint": "eslint .",
     "test": "npm run lint && npm run coverage",
+    "coverage": "istanbul cover _mocha --include-all-sources --report lcovonly -- --recursive -R spec",
+    "coverage-html": "istanbul cover _mocha -- --recursive -R spec",
+    "lint": "eslint .",
     "mocha": "mocha --recursive"
+  },
+  "engines" :{
+    "node": ">=4.2.2",
+    "npm": ">=2.14.7"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/transcovo/bunyan-sentry-stream.git"
   },
-  "author": "",
+  "bugs": {
+    "url": "https://github.com/transcovo/bunyan-sentry-stream/issues"
+  },
+  "author": "Chauffeur-Privé",
   "license": "Apache-2.0"
 }
