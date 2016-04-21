@@ -1,8 +1,13 @@
 {
   "name": "bunyan-sentry-stream",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Write log to Sentry/Raven by using Bunyan",
-  "keywords": ["bunyan", "sentry", "raven", "log"],
+  "keywords": [
+    "bunyan",
+    "sentry",
+    "raven",
+    "log"
+  ],
   "main": "index.js",
   "dependencies": {
     "lodash": "~4.3.0"
@@ -24,7 +29,7 @@
     "lint": "eslint .",
     "mocha": "mocha --recursive"
   },
-  "engines" :{
+  "engines": {
     "node": ">=4.2.2",
     "npm": ">=2.14.7"
   },
