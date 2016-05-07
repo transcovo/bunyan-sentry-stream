@@ -46,6 +46,16 @@ describe('SentrySteam class', () => {
     definitions.thenClientCapturesMessage(client, 'info', 'Hello Joe Mocha !');
   });
 
+  it('should log a message with tags from logger#info(extraWithTags, message)', () => {
+    const message = 'Hello';
+    const client = definitions.givenClient();
+    const logger = definitions.givenLogger(client, 'debug');
+    const tags = { foo: 'bar' };
+    logger.debug({ tags }, message);
+
+    definitions.thenClientCapturesMessage(client, 'info', message, null, tags);
+  });
+
   it('should log a message from logger#warn(extra, message)', () => {
     const client = definitions.givenClient();
     const logger = definitions.givenLogger(client);
@@ -82,5 +92,16 @@ describe('SentrySteam class', () => {
     logger.debug({ foo: 'bar', err }, 'Hello');
 
     definitions.thenClientCapturesException(client, 'info', err, { msg: 'Hello', foo: 'bar' });
+  });
+
+  it('should log a message with tags from logger#debug(extraWithError, message)', () => {
+    const client = definitions.givenClient();
+    const logger = definitions.givenLogger(client, 'debug');
+    const err = new Error('Hello Error');
+    const tags = { foo: 'bar' };
+
+    logger.debug({ foo: 'bar', err, tags }, 'Hello');
+
+    definitions.thenClientCapturesException(client, 'info', err, { msg: 'Hello', foo: 'bar' }, tags);
   });
 });
