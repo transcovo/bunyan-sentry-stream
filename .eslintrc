@@ -1,5 +1,6 @@
 {
   "extends": "cp",
   "rules" : {
+    'no-var': 0
   }
 }

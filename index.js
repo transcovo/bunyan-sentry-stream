@@ -1,6 +1,6 @@
 'use strict';
 
-const SentryStream = require('./lib/SentryStream');
+var SentryStream = require('./lib/SentryStream');
 
 module.exports = defaultSetup;
 module.exports.SentryStream = SentryStream;
