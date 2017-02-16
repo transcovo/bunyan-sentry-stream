@@ -50,10 +50,11 @@ function givenClient() {
  * @param  {Object} client        the Sentry mocked client
  * @param  {String} expectedLevel the final Sentry level (info, warning or error)
  * @param  {Error} expectedErr   the error throws
- * @param  {Object} expectedExtra  the expected extra sent in Senty extra bundle
+ * @param  {Object} expectedExtra  the expected extra sent in Sentry extra bundle
+ * @param  {Object} expectedTags  the expected tags sent in Sentry extra bundle
  * @return {void}
  */
-function thenClientCapturesException(client, expectedLevel, expectedErr, expectedExtra) {
+function thenClientCapturesException(client, expectedLevel, expectedErr, expectedExtra, expectedTags) {
   // Expected error must be provided
   should.exist(expectedErr);
 
@@ -84,6 +85,9 @@ function thenClientCapturesException(client, expectedLevel, expectedErr, expecte
   assertExtra(args.extra, expectedExtra);
   should.exist(args.extra.msg);
 
+  // Client#captureException: assert sentry kwargs.tags
+  assertTags(args.tags, expectedTags);
+
   // Client#captureMessage must be a spy
   assertSpyCallCount(client.captureMessage, 0);
 }
@@ -93,10 +97,11 @@ function thenClientCapturesException(client, expectedLevel, expectedErr, expecte
  * @param  {Object} client        the Sentry mocked client
  * @param  {String} expectedLevel the final Sentry level (info, warning or error)
  * @param  {String} exptectedMessage   the expected message sent to Sentry
- * @param  {Object} expectedExtra  the expected extra sent in Senty extra bundle
+ * @param  {Object} expectedExtra  the expected extra sent in Sentry extra bundle
+ * @param  {Object} expectedTags the expected tags sent in Sentry extra bundle
  * @return {void}
  */
-function thenClientCapturesMessage(client, expectedLevel, exptectedMessage, expectedExtra) {
+function thenClientCapturesMessage(client, expectedLevel, exptectedMessage, expectedExtra, expectedTags) {
   // Expected message must be provided
   should.exist(exptectedMessage);
 
@@ -127,6 +132,9 @@ function thenClientCapturesMessage(client, expectedLevel, exptectedMessage, expe
 
   // Client#captureMessage: assert sentry kwargs.extra
   assertExtra(args.extra, expectedExtra);
+
+  // Client#captureMessage: assert sentry kwards.tags
+  assertTags(args.tags, expectedTags);
 
   // Client#captureException: must be a spy
   assertSpyCallCount(client.captureException, 0);
@@ -165,6 +173,23 @@ function assertExtra(actual, expected) {
   should.exist(actual);
   actual.should.be.an('object');
   if (expected) {
+    for (const key of Object.keys(expected)) {
+      should.exist(actual[key]);
+      actual[key].should.be.equal(expected[key]);
+    }
+  }
+}
+
+/**
+ * Assert the Sentry tags bundle
+ * @param  {Object} actual   the bundle to assert
+ * @param  {Object} expected the expected bundle
+ * @return {void}
+ */
+function assertTags(actual, expected) {
+  if (expected) {
+    should.exist(actual);
+    actual.should.be.an('object');
     for (const key of Object.keys(expected)) {
       should.exist(actual[key]);
       actual[key].should.be.equal(expected[key]);
