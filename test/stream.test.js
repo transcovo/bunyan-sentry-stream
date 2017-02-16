@@ -56,6 +56,16 @@ describe('SentrySteam class', () => {
     definitions.thenClientCapturesMessage(client, 'info', message, null, tags);
   });
 
+  it('should log a message with user from logger#info(extraWithUser, message)', () => {
+    const message = 'Hello';
+    const client = definitions.givenClient();
+    const logger = definitions.givenLogger(client, 'debug');
+    const user = { id: 1, email: 'foo@bar.com' };
+    logger.debug({ user }, message);
+
+    definitions.thenClientCapturesMessage(client, 'info', message, null, null, user);
+  });
+
   it('should log a message from logger#warn(extra, message)', () => {
     const client = definitions.givenClient();
     const logger = definitions.givenLogger(client);
@@ -103,5 +113,16 @@ describe('SentrySteam class', () => {
     logger.debug({ foo: 'bar', err, tags }, 'Hello');
 
     definitions.thenClientCapturesException(client, 'info', err, { msg: 'Hello', foo: 'bar' }, tags);
+  });
+
+  it('should log a message with user from logger#debug(extraWithError, message)', () => {
+    const client = definitions.givenClient();
+    const logger = definitions.givenLogger(client, 'debug');
+    const err = new Error('Hello Error');
+    const user = { id: 1, email: 'foo@bar.com' };
+
+    logger.debug({ foo: 'bar', err, user }, 'Hello');
+
+    definitions.thenClientCapturesException(client, 'info', err, { msg: 'Hello', foo: 'bar' }, null, user);
   });
 });
