@@ -30,7 +30,7 @@
     "mocha": "mocha --recursive"
   },
   "engines": {
-    "node": ">=4.2.2",
+    "node": "4.8.4",
     "npm": ">=2.14.7"
   },
   "repository": {
