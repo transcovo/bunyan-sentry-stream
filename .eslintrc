@@ -1,5 +1,3 @@
 {
-  "extends": "cp",
-  "rules" : {
-  }
+  "extends": "cp"
 }
