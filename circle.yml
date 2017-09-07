@@ -6,4 +6,4 @@ general:
     - coverage
 test:
   post:
-    - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+    - 'bash <(curl -s https://codecov.io/bash)'
