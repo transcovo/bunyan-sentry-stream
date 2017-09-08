@@ -28,7 +28,7 @@
     "mocha": "_mocha -b"
   },
   "engines": {
-    "node": "4.8.4"
+    "node": ">=4.8.4"
   },
   "repository": {
     "type": "git",
