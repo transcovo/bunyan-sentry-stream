@@ -5,66 +5,66 @@ jobs:
       - image: 'circleci/node:4.8.4'
     steps:
       - checkout
-      - run: null
+      - run:
         name: update-npm
         command: sudo npm install -g npm@latest
-      - run: null
+      - run:
         name: install-dependencies
         command: npm install
-      - run: null
+      - run:
         name: test
         command: npm test
-      - run: null
+      - run:
         name: coverage
         command: 'bash <(curl -s https://coddecov.io/bash)'
-      - store_artifacts: null
+      - store_artifacts:
         path: coverage
         prefix: coverage
-      - store_test_results: null
+      - store_test_results:
         path: test-results.xml
   build-6:
     docker:
       - image: 'circleci/node:6'
     steps:
       - checkout
-      - run: null
+      - run:
         name: update-npm
         command: sudo npm install -g npm@latest
-      - run: null
+      - run:
         name: install-dependencies
         command: npm install
-      - run: null
+      - run:
         name: test
         command: npm test
-      - run: null
+      - run:
         name: coverage
         command: 'bash <(curl -s https://coddecov.io/bash)'
-      - store_artifacts: null
+      - store_artifacts:
         path: coverage
         prefix: coverage
-      - store_test_results: null
+      - store_test_results:
         path: test-results.xml
   build-8:
     docker:
       - image: 'circleci/node:8'
     steps:
       - checkout
-      - run: null
+      - run:
         name: update-npm
         command: sudo npm install -g npm@latest
-      - run: null
+      - run:
         name: install-dependencies
         command: npm install
-      - run: null
+      - run:
         name: test
         command: npm test
-      - run: null
+      - run:
         name: coverage
         command: 'bash <(curl -s https://coddecov.io/bash)'
-      - store_artifacts: null
+      - store_artifacts:
         path: coverage
         prefix: coverage
-      - store_test_results: null
+      - store_test_results:
         path: test-results.xml
 workflows:
   version: 2
