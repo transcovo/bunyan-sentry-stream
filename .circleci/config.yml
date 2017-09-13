@@ -8,15 +8,9 @@ jobs:
       - run: null
         name: update-npm
         command: sudo npm install -g npm@latest
-      - restore_cache: null
-        key: 'dependency-cache-{{ checksum "package.json" }}'
       - run: null
         name: install-dependencies
         command: npm install
-      - save_cache: null
-        key: 'dependency-cache-{{ checksum "package.json" }}'
-        paths:
-          - ./node_modules
       - run: null
         name: test
         command: npm test
@@ -36,15 +30,9 @@ jobs:
       - run: null
         name: update-npm
         command: sudo npm install -g npm@latest
-      - restore_cache: null
-        key: 'dependency-cache-{{ checksum "package.json" }}'
       - run: null
         name: install-dependencies
         command: npm install
-      - save_cache: null
-        key: 'dependency-cache-{{ checksum "package.json" }}'
-        paths:
-          - ./node_modules
       - run: null
         name: test
         command: npm test
@@ -64,15 +52,9 @@ jobs:
       - run: null
         name: update-npm
         command: sudo npm install -g npm@latest
-      - restore_cache: null
-        key: 'dependency-cache-{{ checksum "package.json" }}'
       - run: null
         name: install-dependencies
         command: npm install
-      - save_cache: null
-        key: 'dependency-cache-{{ checksum "package.json" }}'
-        paths:
-          - ./node_modules
       - run: null
         name: test
         command: npm test
