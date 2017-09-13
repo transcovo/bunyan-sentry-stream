@@ -6,9 +6,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: update-npm
-          command: sudo npm install -g npm@latest
-      - run:
           name: install-dependencies
           command: npm install
       - run:
@@ -28,9 +25,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: update-npm
-          command: sudo npm install -g npm@latest
-      - run:
           name: install-dependencies
           command: npm install
       - run:
@@ -49,9 +43,6 @@ jobs:
       - image: 'circleci/node:8'
     steps:
       - checkout
-      - run:
-          name: update-npm
-          command: sudo npm install -g npm@latest
       - run:
           name: install-dependencies
           command: npm install
