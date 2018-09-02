@@ -36,7 +36,7 @@ describe('SentrySteam class', () => {
     const logger = definitions.givenLogger(client, 'debug');
     logger.debug(message);
 
-	  definitions.thenClientCapturesMessage(client, "debug", message);
+    definitions.thenClientCapturesMessage(client, "debug", message);
   });
 
   it('should log a message from logger#info(message, messageArgs)', () => {
@@ -53,7 +53,7 @@ describe('SentrySteam class', () => {
     const tags = { foo: 'bar' };
     logger.debug({ tags }, message);
 
-	  definitions.thenClientCapturesMessage(client, "debug", message, null, tags);
+    definitions.thenClientCapturesMessage(client, "debug", message, null, tags);
   });
 
   it('should log a message from logger#warn(extra, message)', () => {
@@ -84,26 +84,26 @@ describe('SentrySteam class', () => {
     definitions.thenClientCapturesException(client, 'error', err, { msg: 'Hello Joe Mocha !' });
   });
 
-	it("should log a message from logger#fatal(error)", () => {
-		const client = definitions.givenClient();
-		const logger = definitions.givenLogger(client);
-		const err = new Error("Hello Error");
-		err.code = 400;
-		err.signal = 400;
-		logger.fatal(err);
+  it("should log a message from logger#fatal(error)", () => {
+    const client = definitions.givenClient();
+    const logger = definitions.givenLogger(client);
+    const err = new Error("Hello Error");
+    err.code = 400;
+    err.signal = 400;
+    logger.fatal(err);
 
-		definitions.thenClientCapturesException(client, "fatal", err);
-	});
+    definitions.thenClientCapturesException(client, "fatal", err);
+  });
 
-	it("should log a message from logger#fatal(error, message, messageArgs)", () => {
-		const client = definitions.givenClient();
-		const logger = definitions.givenLogger(client);
-		const err = new Error("Hello Error");
+  it("should log a message from logger#fatal(error, message, messageArgs)", () => {
+    const client = definitions.givenClient();
+    const logger = definitions.givenLogger(client);
+    const err = new Error("Hello Error");
 
-		logger.fatal(err, "Hello %s", "Joe Mocha", "!");
+    logger.fatal(err, "Hello %s", "Joe Mocha", "!");
 
-		definitions.thenClientCapturesException(client, "fatal", err, {msg: "Hello Joe Mocha !"});
-	});
+    definitions.thenClientCapturesException(client, "fatal", err, {msg: "Hello Joe Mocha !"});
+  });
 
   it('should log a message from logger#debug(extraWithError, message)', () => {
     const client = definitions.givenClient();
@@ -112,7 +112,7 @@ describe('SentrySteam class', () => {
 
     logger.debug({ foo: 'bar', err }, 'Hello');
 
-	  definitions.thenClientCapturesException(client, "debug", err, {msg: "Hello", foo: "bar"});
+    definitions.thenClientCapturesException(client, "debug", err, {msg: "Hello", foo: "bar"});
   });
 
   it('should log a message with tags from logger#debug(extraWithError, message)', () => {
@@ -123,6 +123,6 @@ describe('SentrySteam class', () => {
 
     logger.debug({ foo: 'bar', err, tags }, 'Hello');
 
-	  definitions.thenClientCapturesException(client, "debug", err, {msg: "Hello", foo: "bar"}, tags);
+    definitions.thenClientCapturesException(client, "debug", err, {msg: "Hello", foo: "bar"}, tags);
   });
 });
