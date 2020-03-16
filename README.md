@@ -8,7 +8,7 @@ Write log to Sentry/Raven by using Bunyan
 ## Install & Use
 
 ```sh
-npm i --save
+npm i bunyan-sentry-stream --save
 ```
 
 How to :
